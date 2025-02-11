@@ -42,6 +42,11 @@ def predict():
     
     return jsonify({'Prediction': result})
 
+# ✅ Add a default route for testing
+@app.route('/')
+def home():
+    return "Anemia Prediction API is running!"
+
 # Run the Flask app
 if __name__ == '__main__':
     app.run(debug=True)
