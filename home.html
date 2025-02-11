@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health AI Predictor</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .fade-in { animation: fadeIn 1.5s ease-in-out; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+    </style>
+</head>
+<body class="bg-cover bg-center min-h-screen flex items-center justify-center" 
+    style="background-image: url('https://source.unsplash.com/1600x900/?health,medicine');">
+
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+
+    <div class="bg-white p-8 rounded-2xl shadow-2xl text-center w-96 relative fade-in">
+        <h1 class="text-4xl font-bold text-blue-600">AnemoScan</h1>
+        <p class="text-gray-700 mt-4">An advanced AI-powered tool to detect anaemia and monitor blood health.</p>
+
+        <a href="index.html" class="mt-6 inline-block bg-blue-500 text-white px-6 py-3 rounded-lg text-lg 
+            hover:bg-blue-600 transition transform hover:scale-105">
+            Start Prediction
+        </a>
+    </div>
+
+</body>
+</html>
