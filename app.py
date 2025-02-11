@@ -1,12 +1,12 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS  # Add this line
+from flask import Flask, request, jsonify, render_template
+from flask_cors import CORS
 import pandas as pd
 import pickle
 
-app = Flask(__name__)
-CORS(app)  # Enable CORS for all routes
+app = Flask(__name__, template_folder="templates")  # Add template folder
+CORS(app)
 
-# Load the trained model and scaler
+# Load model and scaler
 with open('model.pkl', 'rb') as model_file:
     logistic = pickle.load(model_file)
 
@@ -23,12 +23,16 @@ def predict_anemia(gender, hemoglobin, mch, mchc, mcv):
 
     return "Anaemic" if prediction[0] == 1 else "Not Anaemic"
 
-# Define an API route for predictions
+# Serve HTML webpage
+@app.route('/')
+def home():
+    return render_template('index.html')  # Load your webpage
+
+# API route for predictions
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.json  # Get JSON data from request
+    data = request.json
     
-    # Extract values from JSON
     gender = data.get('Gender')
     hemoglobin = data.get('Hemoglobin')
     mch = data.get('MCH')
@@ -42,11 +46,6 @@ def predict():
     
     return jsonify({'Prediction': result})
 
-# ✅ Add a default route for testing
-@app.route('/')
-def home():
-    return "Anemia Prediction API is running!"
-
-# Run the Flask app
+# Run Flask app
 if __name__ == '__main__':
     app.run(host='0.0.0.0', port=10000)
