@@ -1,8 +1,3 @@
-# Anaemia-Prediction
-
-Here’s a simple and professional **README.md** content for your **Anaemia Prediction** project on GitHub:
-
----
 
 # Anaemia Prediction 💉
 
